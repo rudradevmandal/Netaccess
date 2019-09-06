@@ -1,0 +1,64 @@
+{
+  "manifest_version": 2,
+
+  "name": "IITM NetAccess Login",
+  "description": "This extension allows the user to login to the CC Networks automatically",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_title": "24 Hr NetAccess"
+	
+  },
+  
+   "author": "Rudra Dev Mandal",
+   "update_url": "http://www.google.com",
+   "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": [
+          "tabs",
+		   "http://*/*",
+		    "https://*/*",
+          "storage"
+        ],
+		
+		"content_scripts": [
+        {
+            "matches": ["https://netaccess.iitm.ac.in/account/login"],
+            "js": ["content.js"]
+        },
+		{
+      "matches": ["https://netaccess.iitm.ac.in/account/index"],
+      "js": ["index.js"]
+    },
+	{
+            "matches": ["https://netaccess.iitm.ac.in/account/approve"],
+            "js": ["approve.js"]
+        }
+		],
+		
+		  "commands": {
+       
+          "_execute_browser_action": {
+            "suggested_key": {
+              "windows": "Ctrl+Shift+L",
+              "mac": "Command+Shift+L",
+              "chromeos": "Ctrl+Shift+L",
+              "linux": "Ctrl+Shift+L"
+            }
+          }
+          
+        },
+		
+		"web_accessible_resources": ["options.html"],
+    
+   "options_page": "options.html"
+  
+}
+
+
+
+
+
+
